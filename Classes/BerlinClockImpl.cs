@@ -25,11 +25,11 @@ namespace BerlinClock.Classes
         public string GetStringRepresentation()
         {
             var sb = new StringBuilder();
-            ConvertSecond(sb);
+            AppendSecond(sb);
             sb.AppendLine();
-            ConvertHour(sb);
+            AppendHour(sb);
             sb.AppendLine();
-            ConvertMinutes(sb);
+            AppendMinutes(sb);
             return sb.ToString();
         }
 
@@ -38,12 +38,12 @@ namespace BerlinClock.Classes
             return GetStringRepresentation();
         }
 
-        internal void ConvertSecond(StringBuilder stringBuilder)
+        internal void AppendSecond(StringBuilder stringBuilder)
         {
             stringBuilder.Append(_seconds % 2 == 0 ? "Y" : "O");
         }
 
-        internal void ConvertHour(StringBuilder stringBuilder)
+        internal void AppendHour(StringBuilder stringBuilder)
         {
             int hourDivisibleBy5 = _hours / 5;
 
@@ -63,7 +63,7 @@ namespace BerlinClock.Classes
             }
         }
 
-        internal void ConvertMinutes(StringBuilder stringBuilder)
+        internal void AppendMinutes(StringBuilder stringBuilder)
         {
             // In the first row every lamp represents 5 minutes.
             int divisibleBy5 = _minutes / 5;

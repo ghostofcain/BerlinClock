@@ -14,7 +14,7 @@ namespace BerlinClock.UnitTests
         public void TestSecond(byte seconds, string expectedRepresentation)
         {
             var sb = new StringBuilder();
-            new BerlinClockImpl(0, 0, seconds).ConvertSecond(sb);
+            new BerlinClockImpl(0, 0, seconds).AppendSecond(sb);
             string berlinSecond = sb.ToString();
             Assert.AreEqual(expectedRepresentation, berlinSecond);
         }
@@ -23,7 +23,7 @@ namespace BerlinClock.UnitTests
         [TestCase(120)]
         public void ThrowsArgumentExceptionIfSecondNotInRange(byte seconds)
         {
-            Assert.Throws<ArgumentException>(() => new BerlinClockImpl(0, 0, seconds).ConvertSecond(new StringBuilder()));
+            Assert.Throws<ArgumentException>(() => new BerlinClockImpl(0, 0, seconds).AppendSecond(new StringBuilder()));
         }
     }
 }
